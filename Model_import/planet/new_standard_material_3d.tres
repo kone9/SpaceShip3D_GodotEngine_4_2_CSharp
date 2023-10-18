@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bsjtoo1kl6i2v"]
+
+[ext_resource type="Texture2D" uid="uid://pm6w2ysgmfey" path="res://Model_import/planet/8k_mercury.jpg" id="1_48xtq"]
+
+[resource]
+albedo_color = Color(0.164706, 0.505882, 1, 1)
+albedo_texture = ExtResource("1_48xtq")
+rim_tint = 0.4
+anisotropy = -0.78
+heightmap_scale = 4.475

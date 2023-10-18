@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://da5xhrgabv2ps"]
+
+[ext_resource type="Script" path="res://Scenes/scripts/C#/ball.cs" id="1_d2wdo"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f44eg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_p5hof"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ewak"]
+radius = 0.593795
+
+[node name="ball" type="RigidBody3D"]
+gravity_scale = 0.0
+linear_velocity = Vector3(30, 0, 0)
+linear_damp_mode = 1
+script = ExtResource("1_d2wdo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_f44eg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_p5hof")
+
+[node name="Area3D" type="Area3D" parent="." groups=["ball"]]
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_7ewak")

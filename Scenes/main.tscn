@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://1vvs85yj3tg3"]
+
+[ext_resource type="PackedScene" uid="uid://dl2v3tnbpwqcx" path="res://Scenes/player.tscn" id="1_h2xsi"]
+[ext_resource type="PackedScene" uid="uid://dkqkehu508o6p" path="res://Scenes/planet.tscn" id="3_38gku"]
+[ext_resource type="AudioStream" uid="uid://cf3ulwq24i4a6" path="res://Sounds/fx/explosion.wav" id="4_ngkm5"]
+[ext_resource type="AudioStream" uid="uid://byutggl8rvehe" path="res://Sounds/fx/hit.wav" id="5_1u34j"]
+[ext_resource type="AudioStream" uid="uid://bpocrgef7gq0e" path="res://Sounds/fx/shot 1.wav" id="6_lcdh2"]
+[ext_resource type="AudioStream" uid="uid://sx7xtvbqkk2y" path="res://Sounds/fx/shot 2.wav" id="7_bnwrl"]
+[ext_resource type="AudioStream" uid="uid://dejwtqabwn64u" path="res://Sounds/space-asteroids.ogg" id="8_gjvjd"]
+[ext_resource type="PackedScene" uid="uid://rlr6nbn2rbci" path="res://Scenes/enemy_spawner.tscn" id="9_c36dx"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bo8hm"]
+rayleigh_coefficient = 0.0
+
+[sub_resource type="Sky" id="Sky_pgjyx"]
+sky_material = SubResource("PhysicalSkyMaterial_bo8hm")
+
+[sub_resource type="Environment" id="Environment_atrur"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_pgjyx")
+sky_rotation = Vector3(0, -4.97768, 0)
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_blend_mode = 4
+fog_light_color = Color(0.188235, 0.588235, 0.8, 1)
+fog_light_energy = 2.04
+fog_sun_scatter = 0.22
+fog_aerial_perspective = 0.254
+fog_sky_affect = 0.081
+fog_height = 32.1
+volumetric_fog_length = 5.0
+adjustment_enabled = true
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_sdocf"]
+albedo_color = Color(0.627451, 0.643137, 1, 0)
+emission_enabled = true
+emission = Color(0.627451, 0.643137, 1, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_v6lfi"]
+radius = 3.0
+height = 6.0
+
+[node name="main" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454611, -0.154512, -0.936816)
+
+[node name="ilumination" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ilumination"]
+environment = SubResource("Environment_atrur")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ilumination"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.94308, -4747.87)
+light_energy = 3.0
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="ilumination"]
+transform = Transform3D(0.196956, -0.0238853, -0.980121, 0, -0.999703, 0.0243625, -0.980412, -0.00479834, -0.196898, 0, 3.94308, -4322.82)
+shadow_enabled = true
+
+[node name="scene" type="Node3D" parent="."]
+
+[node name="planet" parent="scene" instance=ExtResource("3_38gku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1151.42, 1200, -965.882)
+
+[node name="planet2" parent="scene" instance=ExtResource("3_38gku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1848.58, -1200, -965.882)
+
+[node name="SolAtras" type="MeshInstance3D" parent="scene"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -2204.25, 28.5503, -4099.31)
+material_override = SubResource("ORMMaterial3D_sdocf")
+mesh = SubResource("SphereMesh_v6lfi")
+skeleton = NodePath("../../ilumination/DirectionalLight3D")
+
+[node name="player" parent="." instance=ExtResource("1_h2xsi")]
+transform = Transform3D(1, 0, 0, 0, 0.979205, -0.202873, 0, 0.202873, 0.979205, -25.1691, 3.20909, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.556)
+current = true
+
+[node name="enemySpawner" parent="." instance=ExtResource("9_c36dx")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 45, 2.5, 0)
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="explosionSound" type="AudioStreamPlayer" parent="Sound" groups=["explosionSound"]]
+stream = ExtResource("4_ngkm5")
+
+[node name="hitSound" type="AudioStreamPlayer" parent="Sound" groups=["hitSound"]]
+stream = ExtResource("5_1u34j")
+
+[node name="shoot" type="AudioStreamPlayer" parent="Sound" groups=["shoot"]]
+stream = ExtResource("6_lcdh2")
+
+[node name="shootdos" type="AudioStreamPlayer" parent="Sound" groups=["shootdos"]]
+stream = ExtResource("7_bnwrl")
+
+[node name="music" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("8_gjvjd")
+autoplay = true
