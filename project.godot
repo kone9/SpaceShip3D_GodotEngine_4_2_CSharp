@@ -13,12 +13,15 @@ config_version=5
 config/name="Space Ship 3D C# and Vulcan Forward"
 run/main_scene="res://Scenes/InitMain.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://Model_import/texture/ariel_computer_entertainment.png"
 config/icon="res://Model_import/texture/icon_02.png"
 config/windows_native_icon="res://Model_import/texture/iconSpaceShoot3D.ico"
 
 [display]
 
 window/size/mode=2
+window/size/borderless=true
 window/subwindows/embed_subwindows=false
 
 [dotnet]
