@@ -10,59 +10,49 @@ public partial class enemy_spawner : Node3D
     [Export]
     PackedScene ENEMY;
 
-    Godot.Collections.Array< Node > spawnpoints;
+    private Godot.Collections.Array< Node > spawnpoints;
+
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-		spawnpoints = GetChildren();
-		
+		spawnpoints = GetTree().GetNodesInGroup("positionsSpawns");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
-
-
+	//init timer in editor AutoStart
 	private void _on_init_spawner_timer_timeout()
 	{
-		GetNode<Timer>("Timer").Start();
+		GetNode<Timer>("Timer_Spawn").Start();
 	}
 
 
     private void _on_timer_timeout_spawn_enemy()
 	{
-		var spawn_position = get_spawn_position_Aleatory();
-
-        Node new_obstacle = null;
-
-		if (GD.Randf() < 0.1) //se instancian pocos asteroides
+		if (GD.Randf() < 0.1) //Poca probabilidad que se instancien asteroides
 		{
-            new_obstacle = (Area3D)ASTEROID.Instantiate();
-            (new_obstacle as Area3D).GlobalPosition = spawn_position;
+            InstanceEnemy(ASTEROID, get_spawn_position_Aleatory(), Vector3.Zero);
         }
 		else
 		{
-            new_obstacle = (RigidBody3D)ENEMY.Instantiate();
-            (new_obstacle as RigidBody3D).GlobalPosition = spawn_position;
-            (new_obstacle as RigidBody3D).RotationDegrees = new Vector3(0, -180, 0);
-
+            InstanceEnemy(ENEMY, get_spawn_position_Aleatory(), new Vector3(0, -180, 0));
         }
-
-        Node main = GetTree().CurrentScene;
-        main.AddChild(new_obstacle);
-		
-
     }
 
 
+	private void InstanceEnemy(PackedScene scene_obstacle, Vector3 spawn_position, Vector3 spawn_rotation)
+	{
+        Node3D new_obstacle = (Node3D)scene_obstacle.Instantiate();
+        Node main = GetTree().CurrentScene;
+        main.AddChild(new_obstacle);
+        new_obstacle.GlobalPosition = spawn_position;
+        new_obstacle.RotationDegrees = spawn_rotation;
+    }
 
 
     private Vector3 get_spawn_position_Aleatory()
 	{
 		Godot.Collections.Array<Node> points = spawnpoints;
 		points.Shuffle();
-
 		return (points[0] as Marker3D).GlobalPosition;
 	}
 
