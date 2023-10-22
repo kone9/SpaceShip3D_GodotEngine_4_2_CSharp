@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dfcl1klmm0jy2"]
+[gd_scene load_steps=27 format=3 uid="uid://dfcl1klmm0jy2"]
 
 [ext_resource type="PackedScene" uid="uid://dl2v3tnbpwqcx" path="res://Scenes/player.tscn" id="1_0q4ym"]
 [ext_resource type="Script" path="res://scripts/InitMain.cs" id="1_v5n82"]
@@ -177,6 +177,19 @@ _data = {
 "move_init_nave": SubResource("Animation_ejju4")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kkrmc"]
+animation = &"move_init_nave"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trgmq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m15nw"]
+states/End/position = Vector2(690, 100)
+states/move_init_nave/node = SubResource("AnimationNodeAnimation_kkrmc")
+states/move_init_nave/position = Vector2(454, 100)
+transitions = ["Start", "move_init_nave", SubResource("AnimationNodeStateMachineTransition_trgmq")]
+graph_offset = Vector2(-78, -57)
+
 [node name="InitMain" type="Node3D"]
 script = ExtResource("1_v5n82")
 mainNivel = ExtResource("2_wvlyc")
@@ -275,3 +288,8 @@ autoplay = "move_init_nave"
 libraries = {
 "": SubResource("AnimationLibrary_mk7ia")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_m15nw")
+anim_player = NodePath("../AnimationPlayer")
+active = true
