@@ -97,4 +97,4 @@ autostart = true
 [node name="Timer_Spawn_Enemy" type="Timer" parent="."]
 
 [connection signal="timeout" from="init_spawner_Timer" to="." method="_on_init_spawner_timer_timeout"]
-[connection signal="timeout" from="Timer_Spawn_Enemy" to="." method="_on_timer_timeout_spawn_enemy"]
+[connection signal="timeout" from="Timer_Spawn_Enemy" to="." method="_on_timer_spawn_enemy_timeout"]

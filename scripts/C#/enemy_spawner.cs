@@ -22,11 +22,11 @@ public partial class enemy_spawner : Node3D
 	//init timer in editor AutoStart
 	private void _on_init_spawner_timer_timeout()
 	{
-		GetNode<Timer>("Timer_Spawn").Start();
+		GetNode<Timer>("Timer_Spawn_Enemy").Start();
 	}
 
 
-    private void _on_timer_timeout_spawn_enemy()
+    private void _on_timer_spawn_enemy_timeout()
 	{
 		if (GD.Randf() < 0.1) //Poca probabilidad que se instancien asteroides
 		{

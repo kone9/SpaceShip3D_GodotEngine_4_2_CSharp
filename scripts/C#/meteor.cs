@@ -62,7 +62,6 @@ public partial class meteor :  Area3D
     {
         if (Health == 0) return;
 
-
         if (area.IsInGroup("player"))
         {
             if (Health == 0) return;

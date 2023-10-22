@@ -83,8 +83,8 @@ public partial class player : RigidBody3D
     }
 
 
-
     //--- Input shoot ---//
+
     private void Input_Shoot()
     {
         if (PlayerDead == true) return;
@@ -100,6 +100,7 @@ public partial class player : RigidBody3D
 
 
     //--- Input move physics ---//
+
     private void InputAccelerateRigidBody()
     {
         if (PlayerDead == true) return;
@@ -165,6 +166,7 @@ public partial class player : RigidBody3D
 
 
     //--- Move physics ---//
+
     private void Move_X_RigidBody(int direction)
     {
         velocity.Y = direction;
@@ -230,8 +232,6 @@ public partial class player : RigidBody3D
     {
         PlayerDead = true;
         // fisicas
-        GetNode<Area3D>("Area3DPlayer").Monitoring = false;
-        GetNode<Area3D>("Area3DPlayer").Monitorable = false;
         Sleeping = true;
         CanDesacelerate = true;
         // creo nodo particulas

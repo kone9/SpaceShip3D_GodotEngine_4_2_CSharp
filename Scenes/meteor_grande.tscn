@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6xf4m0qfhrxm"]
+[gd_scene load_steps=15 format=3 uid="uid://6xf4m0qfhrxm"]
 
 [ext_resource type="Material" uid="uid://btaqg1h54ndu4" path="res://Model_import/meteor/grande/meteor_grande.tres" id="1_eoy23"]
 [ext_resource type="Script" path="res://scripts/C#/meteor.cs" id="1_rrn5o"]
@@ -88,21 +88,6 @@ albedo_texture = SubResource("GradientTexture1D_668od")
 [sub_resource type="SphereMesh" id="SphereMesh_jf5tj"]
 material = SubResource("StandardMaterial3D_573hq")
 
-[sub_resource type="Animation" id="Animation_w1m4v"]
-resource_name = "fire_shoot"
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("asterioid")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array()
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxf0e"]
-_data = {
-"fire_shoot": SubResource("Animation_w1m4v")
-}
-
 [node name="meteor" type="Area3D" groups=["enemyColision", "meteor"]]
 script = ExtResource("1_rrn5o")
 WINDOW_SIZE_Y = 14.0
@@ -143,11 +128,6 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_cm1kq")
 draw_pass_1 = SubResource("SphereMesh_jf5tj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jxf0e")
-}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
