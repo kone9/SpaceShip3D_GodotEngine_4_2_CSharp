@@ -42,6 +42,7 @@ public partial class player : RigidBody3D
     {
         base._Process(delta);
 
+        Input_Exit_Game();
         RespawnPosition(delta);
         Input_Shoot(); 
 
@@ -69,7 +70,17 @@ public partial class player : RigidBody3D
         }
     }
 
-    
+
+
+    //--- Input Exit Game ---//
+
+    private void Input_Exit_Game()
+    {
+        if (Input.IsActionJustPressed("escape"))
+        {
+            GetTree().Quit();
+        }
+    }
 
 
 
