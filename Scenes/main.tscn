@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://1vvs85yj3tg3"]
+[gd_scene load_steps=21 format=3 uid="uid://1vvs85yj3tg3"]
 
 [ext_resource type="PackedScene" uid="uid://dl2v3tnbpwqcx" path="res://Scenes/player.tscn" id="1_h2xsi"]
 [ext_resource type="PackedScene" uid="uid://dkqkehu508o6p" path="res://Scenes/planet.tscn" id="3_38gku"]
@@ -10,18 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://bgomognp8elly" path="res://Scenes/nebula_plane.tscn" id="9_6dkoe"]
 [ext_resource type="PackedScene" uid="uid://rlr6nbn2rbci" path="res://Scenes/enemy_spawner.tscn" id="9_c36dx"]
 [ext_resource type="ArrayMesh" uid="uid://cyxw40lyxh7hg" path="res://Model_import/meteor/chico/modelo_mas_chico/01_particle/01_particle_asteroid.tres" id="10_oj7lo"]
-[ext_resource type="PackedScene" uid="uid://6xf4m0qfhrxm" path="res://Scenes/meteor_grande.tscn" id="11_rtup3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bo8hm"]
 rayleigh_coefficient = 0.0
 
-[sub_resource type="Sky" id="Sky_pgjyx"]
+[sub_resource type="Sky" id="Sky_ha1tg"]
 sky_material = SubResource("PhysicalSkyMaterial_bo8hm")
 
 [sub_resource type="Environment" id="Environment_atrur"]
 background_mode = 2
 background_energy_multiplier = 0.1
-sky = SubResource("Sky_pgjyx")
+sky = SubResource("Sky_ha1tg")
 sky_rotation = Vector3(0, -4.97768, 0)
 tonemap_mode = 2
 ssr_enabled = true
@@ -46,7 +45,7 @@ adjustment_enabled = true
 [sub_resource type="Gradient" id="Gradient_3yh5p"]
 colors = PackedColorArray(1.82897e-06, 0.718769, 0.662921, 1, 0.37725, 0.345902, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aby3k"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fejnm"]
 gradient = SubResource("Gradient_3yh5p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g38em"]
@@ -56,13 +55,13 @@ gravity = Vector3(-50, 0, 0)
 angle_max = 295.4
 scale_max = 52.28
 color = Color(0.129412, 0.254902, 1, 1)
-color_ramp = SubResource("GradientTexture1D_aby3k")
+color_ramp = SubResource("GradientTexture1D_fejnm")
 turbulence_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_uixyh"]
 colors = PackedColorArray(1.82897e-06, 0.718769, 0.662921, 1, 0.37725, 0.345902, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ry0x"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_11vqq"]
 gradient = SubResource("Gradient_uixyh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tixs7"]
@@ -72,7 +71,7 @@ direction = Vector3(1, 2000, 0)
 gravity = Vector3(-50, 0, 0)
 scale_max = 52.28
 color = Color(0.129412, 0.254902, 1, 1)
-color_ramp = SubResource("GradientTexture1D_4ry0x")
+color_ramp = SubResource("GradientTexture1D_11vqq")
 turbulence_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_seim6"]
@@ -140,7 +139,7 @@ autoplay = true
 transform = Transform3D(8000, 0, 0, 0, 9500, 0, 0, 0, 8000, 0, -564.546, -11416.9)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="nebula_plane"]
-transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999998, 1.11326, 0.0492113, 0.626)
+transform = Transform3D(0.999998, 0, 0, 0, 0.999997, 0, 0, 0, 0.999998, 1.11168, 0.0492112, 0.626027)
 amount = 200
 lifetime = 600.0
 preprocess = 120.0
@@ -150,7 +149,7 @@ process_material = SubResource("ParticleProcessMaterial_g38em")
 draw_pass_1 = ExtResource("10_oj7lo")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="nebula_plane"]
-transform = Transform3D(0.999997, 0, 0, 0, 0.999996, 0, 0, 0, 0.999997, 1.11326, 0.0492113, 0.626)
+transform = Transform3D(0.999997, 0, 0, 0, 0.999996, 0, 0, 0, 0.999997, 1.11168, 0.0492112, 0.626027)
 amount = 200
 lifetime = 600.0
 preprocess = 120.0
@@ -158,9 +157,6 @@ speed_scale = 7.84
 randomness = 0.84
 process_material = SubResource("ParticleProcessMaterial_tixs7")
 draw_pass_1 = ExtResource("10_oj7lo")
-
-[node name="meteor" parent="." instance=ExtResource("11_rtup3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4082, 0, 0)
 
 [node name="Colision_bordes" type="Node3D" parent="."]
 

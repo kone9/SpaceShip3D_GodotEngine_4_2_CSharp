@@ -1,0 +1,277 @@
+[gd_scene load_steps=24 format=3 uid="uid://dfcl1klmm0jy2"]
+
+[ext_resource type="PackedScene" uid="uid://dl2v3tnbpwqcx" path="res://Scenes/player.tscn" id="1_0q4ym"]
+[ext_resource type="Script" path="res://scripts/InitMain.cs" id="1_v5n82"]
+[ext_resource type="Texture2D" uid="uid://cmlx6g80kml5q" path="res://Model_import/texture/SkySinNubes.jpg" id="2_h25la"]
+[ext_resource type="PackedScene" uid="uid://1vvs85yj3tg3" path="res://Scenes/main.tscn" id="2_wvlyc"]
+[ext_resource type="ArrayMesh" uid="uid://cyxw40lyxh7hg" path="res://Model_import/meteor/chico/modelo_mas_chico/01_particle/01_particle_asteroid.tres" id="3_sghjp"]
+[ext_resource type="FontFile" uid="uid://dbicy68exm2ld" path="res://font/nasalization-rg.otf" id="6_gb4qy"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ar6qn"]
+rayleigh_coefficient = 0.0
+
+[sub_resource type="Sky" id="Sky_pgjyx"]
+sky_material = SubResource("PhysicalSkyMaterial_ar6qn")
+
+[sub_resource type="Environment" id="Environment_1vulk"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_pgjyx")
+sky_rotation = Vector3(0, -4.97768, 0)
+tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.2
+glow_blend_mode = 1
+glow_hdr_threshold = 1.37
+glow_hdr_scale = 0.0
+fog_light_color = Color(0.188235, 0.588235, 0.8, 1)
+fog_light_energy = 2.04
+fog_sun_scatter = 0.22
+fog_aerial_perspective = 0.254
+fog_sky_affect = 0.081
+fog_height = 32.1
+volumetric_fog_length = 5.0
+adjustment_enabled = true
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_wa82j"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission_texture = ExtResource("2_h25la")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aeme2"]
+_surfaces = [{
+"aabb": AABB(-2, -1, -0.29049, 4, 2, 0.2905),
+"format": 4097,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 6, 0, 4, 0, 5, 0, 7, 0, 0, 0, 5, 0, 4, 0, 0, 0, 1, 0, 5, 0, 1, 0, 7, 0, 5, 0, 1, 0, 3, 0, 7, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 3, 0, 6, 0, 7, 0, 3, 0, 2, 0, 6, 0),
+"name": "Material",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 192, 0, 0, 128, 191, 46, 189, 59, 179, 0, 0, 0, 64, 0, 0, 128, 191, 46, 189, 59, 179, 0, 0, 0, 192, 0, 0, 128, 63, 46, 189, 59, 51, 0, 0, 0, 64, 0, 0, 128, 63, 46, 189, 59, 51, 0, 0, 0, 192, 0, 0, 128, 191, 24, 187, 148, 190, 0, 0, 0, 64, 0, 0, 128, 191, 24, 187, 148, 190, 0, 0, 0, 192, 0, 0, 128, 63, 22, 187, 148, 190, 0, 0, 0, 64, 0, 0, 128, 63, 22, 187, 148, 190)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0cdr3"]
+resource_name = "Plano_Fondo_Plane"
+_surfaces = [{
+"aabb": AABB(-2, -1, -0.29049, 4, 2, 0.2905),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 4119,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 9, 0, 4, 0, 2, 0, 7, 0, 9, 0, 14, 0, 21, 0, 19, 0, 14, 0, 16, 0, 21, 0, 1, 0, 15, 0, 13, 0, 1, 0, 3, 0, 15, 0, 5, 0, 23, 0, 17, 0, 5, 0, 11, 0, 23, 0, 6, 0, 12, 0, 18, 0, 6, 0, 0, 0, 12, 0, 10, 0, 20, 0, 22, 0, 10, 0, 8, 0, 20, 0),
+"material": SubResource("ORMMaterial3D_wa82j"),
+"name": "Material",
+"primitive": 3,
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 192, 0, 0, 128, 191, 46, 189, 59, 179, 0, 0, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 191, 46, 189, 59, 179, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 191, 46, 189, 59, 179, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 191, 46, 189, 59, 179, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 191, 46, 189, 59, 179, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 191, 46, 189, 59, 179, 255, 255, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 63, 46, 189, 59, 51, 0, 0, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 63, 46, 189, 59, 51, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 63, 46, 189, 59, 51, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 63, 46, 189, 59, 51, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 63, 46, 189, 59, 51, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 63, 46, 189, 59, 51, 255, 255, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 191, 24, 187, 148, 190, 0, 0, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 191, 24, 187, 148, 190, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 191, 24, 187, 148, 190, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 0, 64, 0, 0, 128, 191, 24, 187, 148, 190, 255, 127, 0, 0, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 191, 24, 187, 148, 190, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 0, 64, 0, 0, 128, 191, 24, 187, 148, 190, 255, 255, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 63, 22, 187, 148, 190, 0, 0, 255, 127, 255, 255, 255, 191, 0, 0, 0, 192, 0, 0, 128, 63, 22, 187, 148, 190, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 0, 192, 0, 0, 128, 63, 22, 187, 148, 190, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 63, 22, 187, 148, 190, 255, 255, 255, 255, 255, 255, 255, 63, 0, 0, 0, 64, 0, 0, 128, 63, 22, 187, 148, 190, 255, 127, 255, 255, 255, 255, 255, 191, 0, 0, 0, 64, 0, 0, 128, 63, 22, 187, 148, 190, 255, 255, 255, 127, 255, 255, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_aeme2")
+
+[sub_resource type="Gradient" id="Gradient_1s1vp"]
+colors = PackedColorArray(1.82897e-06, 0.718769, 0.662921, 1, 0.37725, 0.345902, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aby3k"]
+gradient = SubResource("Gradient_1s1vp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_siy7f"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(-50, 0, 0)
+angle_max = 295.4
+scale_max = 52.28
+color = Color(0.129412, 0.254902, 1, 1)
+color_ramp = SubResource("GradientTexture1D_aby3k")
+turbulence_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_3x620"]
+colors = PackedColorArray(1.82897e-06, 0.718769, 0.662921, 1, 0.37725, 0.345902, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4ry0x"]
+gradient = SubResource("Gradient_3x620")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7jbu8"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(1, 2000, 0)
+gravity = Vector3(-50, 0, 0)
+scale_max = 52.28
+color = Color(0.129412, 0.254902, 1, 1)
+color_ramp = SubResource("GradientTexture1D_4ry0x")
+turbulence_enabled = true
+
+[sub_resource type="Theme" id="Theme_iy6c4"]
+default_base_scale = 10.0
+default_font = ExtResource("6_gb4qy")
+default_font_size = 130
+
+[sub_resource type="Theme" id="Theme_wp76d"]
+default_base_scale = 10.0
+default_font = ExtResource("6_gb4qy")
+default_font_size = 30
+
+[sub_resource type="Animation" id="Animation_ejju4"]
+resource_name = "move_init_nave"
+length = 4.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.15991, -5.93509), Vector3(0, 0.246658, -5.93509), Vector3(0, 1.15991, -5.93509)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.781977, 0, 0), Vector3(-0.600393, 0, 0), Vector3(1.0406, 0, 0), Vector3(0.781977, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ypnns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.15991, -5.93509)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.781977, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mk7ia"]
+_data = {
+"RESET": SubResource("Animation_ypnns"),
+"move_init_nave": SubResource("Animation_ejju4")
+}
+
+[node name="InitMain" type="Node3D"]
+script = ExtResource("1_v5n82")
+mainNivel = ExtResource("2_wvlyc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+far = 15000.0
+
+[node name="ilumination" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ilumination"]
+environment = SubResource("Environment_1vulk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ilumination"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.94308, -4747.87)
+light_color = Color(0.619608, 0.690196, 1, 1)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="ilumination"]
+transform = Transform3D(0.196956, -0.0238853, -0.980121, 0, -0.999703, 0.0243625, -0.980412, -0.00479834, -0.196898, 0, 3.94308, -4322.82)
+visible = false
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_0q4ym")]
+transform = Transform3D(1, 0, 0, 0, 0.709522, -0.704684, 0, 0.704684, 0.709522, 0, 1.15991, -5.93509)
+script = null
+
+[node name="nebula_plane" type="Node3D" parent="."]
+transform = Transform3D(8000, 0, 0, 0, 9500, 0, 0, 0, 8000, -327.39, 27.9834, -10856.2)
+
+[node name="Plane" type="MeshInstance3D" parent="nebula_plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.344246, 0, 0, 0)
+mesh = SubResource("ArrayMesh_0cdr3")
+skeleton = NodePath("")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(8999.98, 0, 0, 0, 8999.97, 0, 0, 0, 8999.98, 6004.92, 444.442, -2064.04)
+amount = 200
+lifetime = 600.0
+preprocess = 120.0
+speed_scale = 7.84
+randomness = 0.84
+process_material = SubResource("ParticleProcessMaterial_siy7f")
+draw_pass_1 = ExtResource("3_sghjp")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(8999.97, 0, 0, 0, 8999.96, 0, 0, 0, 8999.97, 6004.92, 444.442, -2064.04)
+amount = 200
+lifetime = 600.0
+preprocess = 120.0
+speed_scale = 7.84
+randomness = 0.84
+process_material = SubResource("ParticleProcessMaterial_7jbu8")
+draw_pass_1 = ExtResource("3_sghjp")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+theme = SubResource("Theme_iy6c4")
+text = "FIRE TO START"
+structured_text_bidi_override = 2
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_wp76d")
+text = "SpaceShip 3D by Ariel Gimenez, Godot Engine 4.1 Version C# And Vulcan"
+structured_text_bidi_override = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move_init_nave"
+libraries = {
+"": SubResource("AnimationLibrary_mk7ia")
+}

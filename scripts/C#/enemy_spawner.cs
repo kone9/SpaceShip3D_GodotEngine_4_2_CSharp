@@ -15,6 +15,7 @@ public partial class enemy_spawner : Node3D
     public override void _Ready()
 	{
 		spawnpoints = GetChildren();
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +24,13 @@ public partial class enemy_spawner : Node3D
 	}
 
 
-	private void _on_timer_timeout_spawn_enemy()
+	private void _on_init_spawner_timer_timeout()
+	{
+		GetNode<Timer>("Timer").Start();
+	}
+
+
+    private void _on_timer_timeout_spawn_enemy()
 	{
 		var spawn_position = get_spawn_position_Aleatory();
 

@@ -1,7 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://djsk3fxnloutn"]
 
 [resource]
-bus/0/volume_db = -8.79822
+bus/0/volume_db = -2.3125
 bus/1/name = &"Explosion"
 bus/1/solo = false
 bus/1/mute = false
