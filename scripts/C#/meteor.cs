@@ -131,7 +131,7 @@ public partial class meteor :  Area3D
         GetNode<GpuParticles3D>("GPUParticles3Dfire").Emitting = true;
         GetNode<MeshInstance3D>("asterioid").Visible = false;
 
-        await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.3 segundo por la explosion
+        //await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.3 segundo por la explosion
         GetNode<CollisionShape3D>("triggercollision").QueueFree();
 
         await ToSignal(GetTree().CreateTimer(2f), "timeout");//detengo por 1 segundo

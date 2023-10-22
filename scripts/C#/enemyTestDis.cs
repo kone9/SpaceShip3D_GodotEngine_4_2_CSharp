@@ -65,7 +65,7 @@ public partial class enemyTestDis : RigidBody3D
         // GetNode<Area3D>("enemyColision").Visible = false;
         //GetNode<CollisionShape3D>("enemyColision/CollisionShapeAreaEnemY").Disabled = true;
 
-        await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.2 por la explosion
+        //await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.2 por la explosion
         GetNode<Area3D>("enemycolision").QueueFree();
 
         await ToSignal(GetTree().CreateTimer(2f), "timeout");//detengo por 1 segundo

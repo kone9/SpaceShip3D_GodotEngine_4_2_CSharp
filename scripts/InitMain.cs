@@ -9,6 +9,7 @@ public partial class InitMain : Node3D
 	public override void _Ready()
 	{
         InitFullScreen();
+        CaptureMouse();
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +17,13 @@ public partial class InitMain : Node3D
 	{
         Input_Exit_Game();
         Input_Change_Level();
+    }
+
+
+    private void CaptureMouse()
+    {
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+        Input.MouseMode = Input.MouseModeEnum.Hidden;
     }
 
 
