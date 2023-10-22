@@ -115,6 +115,33 @@ default_base_scale = 10.0
 default_font = ExtResource("6_gb4qy")
 default_font_size = 30
 
+[sub_resource type="Animation" id="Animation_ypnns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.15991, -5.93509)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.781977, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ejju4"]
 resource_name = "move_init_nave"
 length = 4.9
@@ -142,33 +169,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.781977, 0, 0), Vector3(-0.600393, 0, 0), Vector3(1.0406, 0, 0), Vector3(0.781977, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ypnns"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.15991, -5.93509)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.781977, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mk7ia"]

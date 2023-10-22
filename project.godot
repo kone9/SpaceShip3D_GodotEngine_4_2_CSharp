@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="SpaceShip3D"
-run/main_scene="res://Scenes/main.tscn"
+config/name="Space Ship 3D C# and Vulcan Forward"
+run/main_scene="res://Scenes/InitMain.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Model_import/texture/icon_02.png"
+config/windows_native_icon="res://Model_import/texture/iconSpaceShoot3D.ico"
 
 [display]
 
