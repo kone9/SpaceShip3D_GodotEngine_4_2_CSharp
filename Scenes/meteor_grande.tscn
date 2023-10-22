@@ -120,14 +120,5 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_cm1kq")
 draw_pass_1 = SubResource("SphereMesh_jf5tj")
 
-[node name="GPUParticles3Dfire2" type="GPUParticles3D" parent="." groups=["meteor_grande"]]
-emitting = false
-amount = 50
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_cm1kq")
-draw_pass_1 = SubResource("SphereMesh_jf5tj")
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

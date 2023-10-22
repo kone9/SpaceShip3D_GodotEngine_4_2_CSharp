@@ -37,18 +37,17 @@ public partial class enemyTestDis : RigidBody3D
 
 		if(area.IsInGroup("ball"))
         {
-            area.GetParent().QueueFree();//la bala tengo que destruirla
             await DestroyEnemy(area);
         }
     }
+
+
 
     public async void _on_visible_on_screen_notifier_3d_screen_exited()
     {
         await ToSignal(GetTree().CreateTimer(1f), "timeout");//detengo por 0.2 por la explosion
         QueueFree();
     }
-
-
 
 
     private async Task DestroyEnemy(Area3D area)
@@ -66,10 +65,14 @@ public partial class enemyTestDis : RigidBody3D
         //GetNode<CollisionShape3D>("enemyColision/CollisionShapeAreaEnemY").Disabled = true;
 
         //await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.2 por la explosion
-        GetNode<Area3D>("enemycolision").QueueFree();
+        GetNode<Area3D>("enemycolision").CallDeferred(Area3D.MethodName.SetMonitorable, false); //desactive collision
+        GetNode<Area3D>("enemycolision").CallDeferred(Area3D.MethodName.SetMonitoring, false); //desactive collision
 
         await ToSignal(GetTree().CreateTimer(2f), "timeout");//detengo por 1 segundo
 
         QueueFree();
     }
+
+
+
 }

@@ -24,7 +24,82 @@ public partial class meteor :  Area3D
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
-	{
+    {
+        RandomDirection();
+    }
+
+  
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
+    {
+        MoveClamp_Y(delta);
+    }
+
+    //Called area dead
+    public async void _on_area_entered(Area3D area)
+    {
+        if (Health < 1) return;
+
+        if (area.IsInGroup("player"))
+        {
+            Health -= 1;
+
+            if (Health < 1)
+            {
+                await DestruirMeteor();
+                return;
+            }
+            else
+            {
+                PlayHitSound();
+            }
+
+        }
+
+        if (area.IsInGroup("enemyColision"))
+        {
+            Health -= 1;
+
+            if (Health < 1)
+            {
+                await DestruirMeteor();
+                return;
+            }
+            else
+            {
+                PlayHitSound();
+            }
+
+        }
+
+        if (area.IsInGroup("ball"))
+        {
+            Health -= 1;
+
+            if (Health < 1)
+            {
+                await DestruirMeteor();
+                return;
+            }
+            else
+            {
+                PlayHitSound();
+            }
+
+        }
+
+        if (area.IsInGroup("meteor"))
+        {
+            await DestruirMeteor();
+            return;
+        }
+    }
+
+
+    //--- Positions ---//
+
+    private void RandomDirection()
+    {
         if (GD.Randf() < 0.5)
         {
             dir = -1;
@@ -35,9 +110,8 @@ public partial class meteor :  Area3D
         }
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+    private void MoveClamp_Y(double delta)
+    {
         Vector3 new_position = Position;
         new_position.X -= SPEED.X * (float)delta;
         new_position.Y -= SPEED.Y * (float)delta * dir;
@@ -56,70 +130,7 @@ public partial class meteor :  Area3D
         }
     }
 
-
-
-    public async void _on_area_entered(Area3D area) 
-    {
-        if (Health == 0) return;
-
-        if (area.IsInGroup("player"))
-        {
-            if (Health == 0) return;
-            Health -= 1;
-
-            if (Health < 1)
-            {
-                await DestruirMeteor();
-            }
-            else
-            {
-                PlayHitSound();
-            }
-
-        }
-
-        if (area.IsInGroup("enemyColision"))
-        {
-            if (Health == 0) return;
-            Health -= 1;
-            
-            if (Health < 1)
-            {
-                await DestruirMeteor();
-            }
-            else
-            {
-                PlayHitSound();
-            }
-
-        }
-
-        if (area.IsInGroup("ball"))
-        {
-            if (Health == 0) return;
-            Health -= 1;
-
-            area.GetParent().QueueFree();//destruyo bala no tiene trigger propio
-            
-            if(Health < 1) 
-            {
-                await DestruirMeteor();
-            }
-            else
-            {
-                PlayHitSound();
-            }
-
-        }
-
-        if (area.IsInGroup("meteor"))
-        {
-            await DestruirMeteor();
-        }
-
-
-
-    }
+    //--- Destroy ---//
 
     private async Task DestruirMeteor()
     {
@@ -131,9 +142,10 @@ public partial class meteor :  Area3D
         GetNode<MeshInstance3D>("asterioid").Visible = false;
 
         //await ToSignal(GetTree().CreateTimer(0.2f), "timeout");//detengo por 0.3 segundo por la explosion
-        GetNode<CollisionShape3D>("triggercollision").QueueFree();
+        CallDeferred(Area3D.MethodName.SetMonitorable, false); //desactive collision
+        CallDeferred(Area3D.MethodName.SetMonitoring, false); //desactive collision
 
-        await ToSignal(GetTree().CreateTimer(2f), "timeout");//detengo por 1 segundo
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");//detengo por 1 segundo
         QueueFree();
     }
 
@@ -141,7 +153,6 @@ public partial class meteor :  Area3D
     {
         (GetTree().GetFirstNodeInGroup("hitSound") as AudioStreamPlayer).Play();
     }
-
 
     public async void _on_visible_on_screen_notifier_3d_screen_exited()
     {
