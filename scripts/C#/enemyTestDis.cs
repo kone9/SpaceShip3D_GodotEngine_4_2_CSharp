@@ -28,16 +28,19 @@ public partial class enemyTestDis : RigidBody3D
         if (area.IsInGroup("meteor"))
         {
            await DestroyEnemy(area);
+           return;
         }
 
         if (area.IsInGroup("player"))
 		{
             await DestroyEnemy(area);
+            return;
         }
 
 		if(area.IsInGroup("ball"))
         {
             await DestroyEnemy(area);
+            return;
         }
     }
 
