@@ -145,7 +145,7 @@ public partial class meteor :  Area3D
         CallDeferred(Area3D.MethodName.SetMonitorable, false); //desactive collision
         CallDeferred(Area3D.MethodName.SetMonitoring, false); //desactive collision
 
-        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");//detengo por 1 segundo
+        await ToSignal(GetTree().CreateTimer(1f), "timeout");//detengo por 1 segundo
         QueueFree();
     }
 

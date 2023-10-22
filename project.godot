@@ -21,8 +21,6 @@ config/windows_native_icon="res://Model_import/texture/iconSpaceShoot3D.ico"
 [display]
 
 window/size/mode=3
-window/size/borderless=true
-window/subwindows/embed_subwindows=false
 
 [dotnet]
 
