@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://im6d4tup6cyg"]
+
+[ext_resource type="PackedScene" uid="uid://1b0y3lwl4mis" path="res://Model_import/nebula/nebula.glb" id="1_i3cgx"]
+
+[node name="nebula" instance=ExtResource("1_i3cgx")]
+
+[node name="nube_principal" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.082951, -0.135454, 0.176339)
+
+[node name="nube_grande" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722464, 0.545922, 0.888068)
+
+[node name="nube_grande_03" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722464, 0.502889, -0.861471)
+
+[node name="nube_grande_01" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.240624, 0.762455)
+
+[node name="nube_grande_02" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.033905, 0.4111, 0.265699)
+
+[node name="nube_chica" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132264, -0.321641, 0.0223119)
+
+[node name="rayos_luz_001" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.126549, 0.0917597, 0.930635)
+
+[node name="rayos_luz" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140742, 0.12265, -0.105099)
+
+[node name="rayo_luz_medio" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0347035, 0.0615509, 0.0876265)

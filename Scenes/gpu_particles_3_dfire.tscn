@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh1tanwk7egq5"]
+
+[sub_resource type="Gradient" id="Gradient_jilwe"]
+offsets = PackedFloat32Array(0, 0.467312, 1)
+colors = PackedColorArray(0.88663, 0.276339, 0, 1, 0.699584, 0.362202, 0.198535, 1, 0.717647, 0.211765, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nyunh"]
+gradient = SubResource("Gradient_jilwe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_si23d"]
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+tangential_accel_min = 1.0
+tangential_accel_max = 2.0
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_nyunh")
+hue_variation_max = 0.36
+
+[sub_resource type="Gradient" id="Gradient_16ogn"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.195062, 0.688889, 1)
+colors = PackedColorArray(0.82353, 0.385529, 0, 1, 0.495653, 0.350057, -0.000954041, 1, 0.486417, 0.34163, 0, 1, 0.473293, 0, 0.044887, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ntokm"]
+gradient = SubResource("Gradient_16ogn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m27lq"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.45098)
+albedo_texture = SubResource("GradientTexture1D_ntokm")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8kri4"]
+material = SubResource("StandardMaterial3D_m27lq")
+
+[node name="GPUParticles3Dfire" type="GPUParticles3D"]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_si23d")
+draw_pass_1 = SubResource("SphereMesh_8kri4")

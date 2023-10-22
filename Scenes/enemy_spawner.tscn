@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://rlr6nbn2rbci"]
+[gd_scene load_steps=14 format=3 uid="uid://rlr6nbn2rbci"]
 
-[ext_resource type="Script" path="res://Scenes/scripts/C#/enemy_spawner.cs" id="1_bbu6h"]
+[ext_resource type="Script" path="res://scripts/C#/enemy_spawner.cs" id="1_bbu6h"]
 [ext_resource type="PackedScene" uid="uid://cq7cpaf7qbe06" path="res://Scenes/enemy.tscn" id="2_lhl23"]
+[ext_resource type="PackedScene" uid="uid://6xf4m0qfhrxm" path="res://Scenes/meteor_grande.tscn" id="2_yqfqu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_iixfe"]
 
@@ -26,6 +27,7 @@
 [node name="enemySpawner" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 script = ExtResource("1_bbu6h")
+ASTEROID = ExtResource("2_yqfqu")
 ENEMY = ExtResource("2_lhl23")
 
 [node name="position" type="Marker3D" parent="."]

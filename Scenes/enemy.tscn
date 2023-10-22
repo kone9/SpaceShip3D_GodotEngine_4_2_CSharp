@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq7cpaf7qbe06"]
+[gd_scene load_steps=17 format=3 uid="uid://cq7cpaf7qbe06"]
 
-[ext_resource type="Script" path="res://Scenes/scripts/C#/enemyTestDis.cs" id="1_2wgb4"]
+[ext_resource type="Script" path="res://scripts/C#/enemyTestDis.cs" id="1_dsegf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iwtuj"]
 resource_name = "ROJO"
@@ -139,13 +139,49 @@ height = 4.825
 [sub_resource type="SphereShape3D" id="SphereShape3D_frtrx"]
 radius = 2.60775
 
+[sub_resource type="Gradient" id="Gradient_lvt2g"]
+offsets = PackedFloat32Array(0, 0.467312, 1)
+colors = PackedColorArray(0.88663, 0.276339, 0, 1, 0.699584, 0.362202, 0.198535, 1, 0.717647, 0.211765, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yl5si"]
+gradient = SubResource("Gradient_lvt2g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fkqkk"]
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+tangential_accel_min = 1.0
+tangential_accel_max = 2.0
+color = Color(0, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_yl5si")
+hue_variation_max = 0.36
+
+[sub_resource type="Gradient" id="Gradient_npouw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.195062, 0.688889, 1)
+colors = PackedColorArray(0.82353, 0.385529, 0, 1, 0.495653, 0.350057, -0.000954041, 1, 0.486417, 0.34163, 0, 1, 0.473293, 0, 0.044887, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gp5f8"]
+gradient = SubResource("Gradient_npouw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abcrk"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.45098)
+albedo_texture = SubResource("GradientTexture1D_gp5f8")
+
+[sub_resource type="SphereMesh" id="SphereMesh_88wdl"]
+material = SubResource("StandardMaterial3D_abcrk")
+
 [node name="enemy" type="RigidBody3D"]
 gravity_scale = 0.0
 linear_velocity = Vector3(-10, 0, 0)
 linear_damp_mode = 1
 angular_velocity = Vector3(-5.23599, 0, 0)
 constant_force = Vector3(-1, 0, 0)
-script = ExtResource("1_2wgb4")
+script = ExtResource("1_dsegf")
 
 [node name="enemy3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223138, -0.0204437, -0.0261457)
@@ -155,11 +191,24 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.0334168, 0.999442, 0, -0.999442, -0.0334168, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ktj14")
+disabled = true
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="enemycolision" type="Area3D" parent="." groups=["enemyColision"]]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShapeAreaEnemY" type="CollisionShape3D" parent="enemycolision" groups=["CollisionShapeAreaEnemY"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.223138, -0.0204437, -0.0261457)
 shape = SubResource("SphereShape3D_frtrx")
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[node name="GPUParticles3Dfire" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fkqkk")
+draw_pass_1 = SubResource("SphereMesh_88wdl")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="area_entered" from="enemycolision" to="." method="_on_area_3d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

@@ -1,0 +1,12 @@
+# Blender 3.6.5 MTL File: 'nebula.blend'
+# www.blender.org
+
+newmtl asteroid_bake.001
+Ns 90.000000
+Ka 0.500000 0.500000 0.500000
+Kd 0.246201 0.066626 0.008023
+Ks 0.261338 0.261338 0.261338
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3

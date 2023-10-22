@@ -1,0 +1,10 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://btaqg1h54ndu4"]
+
+[ext_resource type="Texture2D" uid="uid://ddk0x6rieq1uo" path="res://Model_import/meteor/meteor_difuse.jpg" id="1_ll2vr"]
+[ext_resource type="Texture2D" uid="uid://bsokyjf4xbfgq" path="res://Model_import/meteor/meteor_normal.jpg" id="2_0osm5"]
+
+[resource]
+albedo_texture = ExtResource("1_ll2vr")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_0osm5")

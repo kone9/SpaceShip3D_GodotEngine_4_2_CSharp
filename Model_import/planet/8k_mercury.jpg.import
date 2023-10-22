@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pm6w2ysgmfey"
-path.s3tc="res://.godot/imported/8k_mercury.jpg-528e4b04b8e17238edc6c7d927dc5a2a.s3tc.ctex"
+path="res://.godot/imported/8k_mercury.jpg-528e4b04b8e17238edc6c7d927dc5a2a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Model_import/planet/8k_mercury.jpg"
-dest_files=["res://.godot/imported/8k_mercury.jpg-528e4b04b8e17238edc6c7d927dc5a2a.s3tc.ctex"]
+dest_files=["res://.godot/imported/8k_mercury.jpg-528e4b04b8e17238edc6c7d927dc5a2a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

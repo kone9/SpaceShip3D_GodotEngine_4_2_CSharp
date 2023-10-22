@@ -1,0 +1,14 @@
+[gd_resource type="ORMMaterial3D" load_steps=4 format=3 uid="uid://dlefxfiuaqkng"]
+
+[ext_resource type="Texture2D" uid="uid://0tg20ughqgob" path="res://Model_import/meteor/chico/asteroid_chico_difuse.jpg" id="1_jodt6"]
+[ext_resource type="Texture2D" uid="uid://bw4lfe68fwexr" path="res://Model_import/meteor/chico/asteroid_chico_normal.jpg" id="2_kevay"]
+[ext_resource type="Texture2D" uid="uid://onfsw3ra4sb2" path="res://Model_import/meteor/chico/asteroid_chico_ambient_oclusion.jpg" id="3_cnvf2"]
+
+[resource]
+albedo_texture = ExtResource("1_jodt6")
+orm_texture = ExtResource("3_cnvf2")
+normal_enabled = true
+normal_scale = 10.0
+normal_texture = ExtResource("2_kevay")
+ao_enabled = true
+ao_light_affect = 0.39

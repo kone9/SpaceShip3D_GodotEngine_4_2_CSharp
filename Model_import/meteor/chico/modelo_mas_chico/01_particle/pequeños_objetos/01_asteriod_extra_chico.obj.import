@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://5sl7n3wak5ow"
+path="res://.godot/imported/01_asteriod_extra_chico.obj-4f41a8805eb608957ec63be42865d086.mesh"
+
+[deps]
+
+files=["res://.godot/imported/01_asteriod_extra_chico.obj-4f41a8805eb608957ec63be42865d086.mesh"]
+
+source_file="res://Model_import/meteor/chico/modelo_mas_chico/01_particle/pequeños_objetos/01_asteriod_extra_chico.obj"
+dest_files=["res://.godot/imported/01_asteriod_extra_chico.obj-4f41a8805eb608957ec63be42865d086.mesh", "res://.godot/imported/01_asteriod_extra_chico.obj-4f41a8805eb608957ec63be42865d086.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

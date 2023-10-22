@@ -1,0 +1,15 @@
+[gd_resource type="ORMMaterial3D" load_steps=3 format=3 uid="uid://c6ut2uu7rgb8v"]
+
+[ext_resource type="Texture2D" uid="uid://pm6w2ysgmfey" path="res://Model_import/planet/8k_mercury.jpg" id="1_2i6v5"]
+[ext_resource type="Texture2D" uid="uid://deud8h0jfvpqf" path="res://Model_import/planet/8k_mercury_normal.png" id="2_7xlso"]
+
+[resource]
+albedo_color = Color(0.196078, 0.505882, 1, 1)
+albedo_texture = ExtResource("1_2i6v5")
+orm_texture = ExtResource("1_2i6v5")
+normal_enabled = true
+normal_scale = 0.1
+normal_texture = ExtResource("2_7xlso")
+rim_enabled = true
+clearcoat_roughness = 0.43
+subsurf_scatter_strength = 0.59
